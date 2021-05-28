@@ -201,7 +201,7 @@ def main():
             print({"Train": train_statistics})
 
             for key, val in train_statistics.items():
-                run[f"tune_linear/repeat{repeat}/train/{key}"].log(val)
+                run[f"tune_linear/repeat_{repeat}/train/{key}"].log(val)
             
             print("Evaluating...")
             train_perf = eval(linear_model, device, train_loader, evaluator)

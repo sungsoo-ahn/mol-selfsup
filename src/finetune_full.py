@@ -190,7 +190,7 @@ def main():
             print({"Train": train_statistics})
 
             for key, val in train_statistics.items():
-                run[f"tune_{args.subsample_ratio:.2f}/train/{key}"].log(val)
+                run[f"tune_{args.subsample_ratio:.2f}/repeat_{repeat}/train/{key}"].log(val)
         
             print("Evaluating...")
             train_perf = eval(model, device, train_loader, evaluator)
