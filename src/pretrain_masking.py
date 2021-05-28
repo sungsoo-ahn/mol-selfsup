@@ -73,7 +73,7 @@ def main():
     parser.add_argument("--device", type=int, default=0)
     parser.add_argument("--mask_rate", type=float, default=0.15)
     parser.add_argument("--batch_size", type=int, default=256)
-    parser.add_argument("--epochs", type=int, default=100)
+    parser.add_argument("--epochs", type=int, default=500)
     parser.add_argument("--num_workers", type=int, default=0)
     parser.add_argument("--dataset", type=str, default="ogbg-molhiv")
     parser.add_argument("--offline", action="store_true")

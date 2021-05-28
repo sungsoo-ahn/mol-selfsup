@@ -113,7 +113,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--device", type=int, default=0)
     parser.add_argument("--batch_size", type=int, default=32)
-    parser.add_argument("--epochs", type=int, default=10)
+    parser.add_argument("--epochs", type=int, default=100)
     parser.add_argument("--num_workers", type=int, default=0)
     parser.add_argument("--dataset", type=str, default="ogbg-molhiv")
     parser.add_argument("--offline", action="store_true")
