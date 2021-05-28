@@ -133,7 +133,7 @@ def main():
     )
 
     ### automatic dataloading and splitting
-    dataset = PygGraphPropPredDataset(name=args.dataset)
+    dataset = PygGraphPropPredDataset(name=args.dataset, root="../resource/dataset")
 
     split_idx = dataset.get_idx_split()    
     if args.subsample_ratio < 1.0:

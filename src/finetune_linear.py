@@ -152,7 +152,7 @@ def main():
         model.gnn_node.load_state_dict(state_dict["gnn_node"])
 
     ### automatic dataloading and splitting
-    dataset = PygGraphPropPredDataset(name=args.dataset)
+    dataset = PygGraphPropPredDataset(name=args.dataset, root="../resource/dataset")
     evaluator = Evaluator(args.dataset)
     tsr_dataset = create_tsr_dataset(model, dataset, device)
     
