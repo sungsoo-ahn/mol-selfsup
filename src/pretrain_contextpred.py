@@ -132,7 +132,7 @@ def train(model, model_context, device, loader, optimizer, optimizer_context, ne
             pred_neg.double(), torch.zeros(len(pred_neg)).to(pred_neg.device).double()
         )
         loss = loss_pos + neg_samples * loss_neg
-        
+
         optimizer.zero_grad()
         optimizer_context.zero_grad()
         loss.backward()
@@ -167,7 +167,7 @@ def collate(data_list):
     cumsum_context = 0
 
     i = 0
-    
+
     for data in data_list:
         if hasattr(data, "x_context"):
             num_nodes = data.num_nodes
@@ -183,7 +183,7 @@ def collate(data_list):
                 cumsum = key in ["edge_index", "edge_index_substruct", "edge_index_context", "overlap_context_substruct_idx", "center_substruct_idx"]
                 item = item + cumsum_substruct if cumsum else item
                 batch[key].append(item)
-            
+
 
             ###batching for the context graph
             for key in ["overlap_context_substruct_idx", "edge_attr_context", "edge_index_context", "x_context"]:
@@ -193,7 +193,7 @@ def collate(data_list):
                 batch[key].append(item)
 
             cumsum_main += num_nodes
-            cumsum_substruct += num_nodes_substruct   
+            cumsum_substruct += num_nodes_substruct
             cumsum_context += num_nodes_context
             i += 1
 
@@ -202,7 +202,7 @@ def collate(data_list):
             -1 if key in ["edge_index", "edge_index_substruct", "edge_index_context"] else 0
         )
         batch[key] = torch.cat(batch[key], dim=cat_dim)
-        
+
     batch.batch_overlapped_context = torch.cat(batch.batch_overlapped_context, dim=-1)
     batch.overlapped_context_size = torch.LongTensor(batch.overlapped_context_size)
 
@@ -217,7 +217,7 @@ def main():
     parser.add_argument("--l1", type=int, default=4)
     parser.add_argument("--l2", type=int, default=7)
     parser.add_argument("--batch_size", type=int, default=256)
-    parser.add_argument("--epochs", type=int, default=500)
+    parser.add_argument("--epochs", type=int, default=1000)
     parser.add_argument("--num_workers", type=int, default=0)
     parser.add_argument("--dataset", type=str, default="ogbg-molhiv")
     parser.add_argument("--offline", action="store_true")

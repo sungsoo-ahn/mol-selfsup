@@ -16,7 +16,7 @@ def main():
     args = parser.parse_args()
 
     neptune_project = "sungsahn0215/mol-selfsup"
-    neptune_name = "pretrain_masking"
+    neptune_name = "pretrain_nopretrain"
     run = neptune.init(
         project=neptune_project,
         name=neptune_name,

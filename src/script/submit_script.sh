@@ -3,7 +3,7 @@
 #SBATCH --partition=mbzuai
 #SBATCH --ntasks=1
 #SBATCH --time=24:00:00
-#SBATCH --output=/nfs/projects/mbzuai/peterahn/workspace/substruct-embedding/resource/log/job_%j.log
+#SBATCH --output=/nfs/projects/mbzuai/peterahn/workspace/mol-selfsup/resource/log/job_%j.log
 #SBATCH -N 1
 #SBATCH -G 1
 #SBATCH --cpus-per-task=8
@@ -15,4 +15,4 @@ srun \
   --no-container-mount-home \
   --container-mounts="/nfs/projects/mbzuai/peterahn/workspace/mol-selfsup:/mol-selfsup" \
   --container-workdir="/mol-selfsup/src" \
-  bash ../script/${1}.sh
+  bash ${1}
